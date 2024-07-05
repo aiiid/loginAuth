@@ -23,20 +23,28 @@ class CustomTextField: UITextField {
     }
     
     private func configureTextField(isPasswordField: Bool) {
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.gray
-        ]
-        attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: placeholderAttributes)
-        borderStyle = .roundedRect
-        
-        if isPasswordField {
-            eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-            eyeButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .selected)
-            eyeButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-            rightView = eyeButton
-            rightViewMode = .always
+            let placeholderAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.lightGray
+            ]
+            attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: placeholderAttributes)
+            
+            borderStyle = .none
+            backgroundColor = UIColor.systemGray6
+            layer.cornerRadius = 10
+            layer.masksToBounds = true
+            
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
+            leftView = paddingView
+            leftViewMode = .always
+            
+            if isPasswordField {
+                eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+                eyeButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .selected)
+                eyeButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+                rightView = eyeButton
+                rightViewMode = .always
+            }
         }
-    }
     
     @objc private func togglePasswordVisibility() {
         isSecureTextEntry.toggle()

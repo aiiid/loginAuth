@@ -18,6 +18,11 @@
 		E22066632C36AE2E002706D0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066622C36AE2E002706D0 /* Constants.swift */; };
 		E22066652C36AEA7002706D0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066642C36AEA7002706D0 /* Extension.swift */; };
 		E22066682C36BC22002706D0 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066672C36BC22002706D0 /* CustomTextField.swift */; };
+		E220666A2C37B46B002706D0 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066692C37B46B002706D0 /* AlertView.swift */; };
+		E220666C2C37B9F0002706D0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220666B2C37B9F0002706D0 /* LoginViewModel.swift */; };
+		E220666F2C37BF15002706D0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220666E2C37BF15002706D0 /* NetworkManager.swift */; };
+		E22066722C381ED5002706D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066712C381ED5002706D0 /* HomeView.swift */; };
+		E22066742C381EDF002706D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066732C381EDF002706D0 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		E22066622C36AE2E002706D0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E22066642C36AEA7002706D0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		E22066672C36BC22002706D0 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E22066692C37B46B002706D0 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		E220666B2C37B9F0002706D0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E220666E2C37BF15002706D0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E22066712C381ED5002706D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E22066732C381EDF002706D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +98,11 @@
 		E22066412C36788A002706D0 /* Login Auth training */ = {
 			isa = PBXGroup;
 			children = (
+				E220666D2C37BD15002706D0 /* NetworkManager */,
 				E22066612C36AE08002706D0 /* Utilities */,
 				E220665C2C3688F0002706D0 /* SplashScreen */,
 				E22066592C367C20002706D0 /* LoginScreen */,
+				E22066702C381EB0002706D0 /* Home */,
 				E22066582C367C00002706D0 /* Support */,
 				E22066502C36788D002706D0 /* Info.plist */,
 			);
@@ -111,8 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				E22066662C36BC04002706D0 /* Custom */,
-				E220665D2C36890B002706D0 /* LoginViewController.swift */,
 				E220665F2C368916002706D0 /* LoginView.swift */,
+				E220666B2C37B9F0002706D0 /* LoginViewModel.swift */,
+				E220665D2C36890B002706D0 /* LoginViewController.swift */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";
@@ -139,8 +152,26 @@
 			isa = PBXGroup;
 			children = (
 				E22066672C36BC22002706D0 /* CustomTextField.swift */,
+				E22066692C37B46B002706D0 /* AlertView.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		E220666D2C37BD15002706D0 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				E220666E2C37BF15002706D0 /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		E22066702C381EB0002706D0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E22066712C381ED5002706D0 /* HomeView.swift */,
+				E22066732C381EDF002706D0 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,11 +287,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E220666F2C37BF15002706D0 /* NetworkManager.swift in Sources */,
 				E22066602C368916002706D0 /* LoginView.swift in Sources */,
+				E22066722C381ED5002706D0 /* HomeView.swift in Sources */,
 				E22066432C36788A002706D0 /* AppDelegate.swift in Sources */,
+				E220666C2C37B9F0002706D0 /* LoginViewModel.swift in Sources */,
+				E22066742C381EDF002706D0 /* HomeViewController.swift in Sources */,
 				E22066452C36788A002706D0 /* SceneDelegate.swift in Sources */,
 				E220665B2C367C2D002706D0 /* SplashView.swift in Sources */,
 				E22066632C36AE2E002706D0 /* Constants.swift in Sources */,
+				E220666A2C37B46B002706D0 /* AlertView.swift in Sources */,
 				E220665E2C36890B002706D0 /* LoginViewController.swift in Sources */,
 				E22066572C367BF6002706D0 /* SplashScreenViewController.swift in Sources */,
 				E22066652C36AEA7002706D0 /* Extension.swift in Sources */,

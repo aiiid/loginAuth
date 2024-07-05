@@ -8,4 +8,5 @@ target 'Login Auth training' do
   # Pods for Login Auth training
 	pod 'SwiftLint'
 	pod 'SnapKit'
+	pod 'Alamofire', '~> 5.4'
 end

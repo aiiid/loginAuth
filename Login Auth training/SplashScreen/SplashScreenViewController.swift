@@ -9,7 +9,6 @@ import UIKit
 
 class SplashScreenViewController: UIViewController {
     private let contentView = SplashView()
-    private var selectedCategoryIndex: IndexPath?
     
     override func loadView() {
         view = contentView
