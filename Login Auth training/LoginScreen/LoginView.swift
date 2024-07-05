@@ -69,39 +69,39 @@ class LoginView: UIView {
         ].forEach{ addSubview($0)}
         
         mainImage.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(24)
+            make.top.equalTo(safeAreaLayoutGuide).offset(Constants.Padding.large)
             make.centerX.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(94)
         }
         
         mainText.snp.makeConstraints { make in
-            make.top.equalTo(mainImage.snp.bottom).offset(30)
+            make.top.equalTo(mainImage.snp.bottom).offset(Constants.Padding.large)
             make.leading.trailing.equalToSuperview().inset(50)
             make.centerX.equalToSuperview()
         }
         
         loginTextField.snp.makeConstraints { make in
-            make.top.equalTo(mainText.snp.bottom).offset(28)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(50)
+            make.top.equalTo(mainText.snp.bottom).offset(Constants.Padding.large)
+            make.leading.trailing.equalToSuperview().inset(Constants.Padding.medium)
+            make.height.equalTo(Constants.Size.textFieldHeight)
         }
         
         passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(loginTextField.snp.bottom).offset(25)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
+            make.top.equalTo(loginTextField.snp.bottom).offset(Constants.Padding.medium)
+            make.leading.trailing.equalToSuperview().inset(Constants.Padding.medium)
+            make.height.equalTo(Constants.Size.textFieldHeight)
         }
         
         loginButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(Constants.Padding.large)
+            make.leading.trailing.equalToSuperview().inset(Constants.Padding.medium)
+            make.height.equalTo(Constants.Size.textFieldHeight)
         }
         
         registerButton.snp.makeConstraints { make in
-            make.top.equalTo(loginButton.snp.bottom).offset(14)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(50)
+            make.top.equalTo(loginButton.snp.bottom).offset(Constants.Padding.small)
+            make.leading.trailing.equalToSuperview().inset(Constants.Padding.medium)
+            make.height.equalTo(Constants.Size.textFieldHeight)
         }
         
         alertView.snp.makeConstraints { make in

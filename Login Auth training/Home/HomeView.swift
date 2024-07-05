@@ -52,21 +52,21 @@ class HomeView: UIView {
         ].forEach{ addSubview($0)}
         
         mainImage.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(24)
+            make.top.equalTo(safeAreaLayoutGuide).offset(Constants.Padding.large)
             make.center.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(94)
         }
         
         mainText.snp.makeConstraints { make in
-            make.bottom.equalTo(mainImage.snp.top).offset(30)
+            make.bottom.equalTo(mainImage.snp.top).offset(Constants.Padding.large)
             make.leading.trailing.equalToSuperview().inset(50)
             make.centerX.equalToSuperview()
         }
         
         exitButton.snp.makeConstraints { make in
             make.top.equalTo(mainImage.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
+            make.leading.trailing.equalToSuperview().inset(Constants.Padding.medium)
+            make.height.equalTo(Constants.Size.textFieldHeight)
         }
     }
 }

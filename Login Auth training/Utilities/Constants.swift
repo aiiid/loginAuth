@@ -8,6 +8,16 @@
 import UIKit
 
 struct Constants {
+    struct Padding {
+            static let small: CGFloat = 16
+            static let medium: CGFloat = 20
+            static let large: CGFloat = 25
+        }
+    
+    struct Size {
+            static let textFieldHeight: CGFloat = 50
+        }
+    
     struct Colors {
         static let primaryColor = UIColor(hex: "#292929")
         static let backgroundColor = UIColor.systemBackground
