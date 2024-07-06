@@ -28,7 +28,7 @@ class HomeView: UIView {
         var button = UIButton(type: .system)
         button.setTitle("Выйти", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = Constants.Colors.primaryColor
+        button.backgroundColor = Constants.Colors.primary
         button.layer.cornerRadius = 10
         return button
     }()

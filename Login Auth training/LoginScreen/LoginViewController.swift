@@ -33,11 +33,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    private func setupDataSource() {
-        
-    }
-    
     @objc func loginTapped() {
         viewModel.validateCredentials(
             username: contentView.loginTextField.text,
@@ -52,6 +47,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func registerTapped() {
-        
+        let registrationViewController = RegistrationViewController()
+        navigationController?.pushViewController(registrationViewController, animated: true)
     }
 }

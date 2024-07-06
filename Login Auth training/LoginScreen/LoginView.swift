@@ -32,7 +32,7 @@ class LoginView: UIView {
         var button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.tintColor = .white
-        button.backgroundColor = Constants.Colors.primaryColor
+        button.backgroundColor = Constants.Colors.primary
         button.layer.cornerRadius = 10
         return button
     }()
@@ -40,7 +40,7 @@ class LoginView: UIView {
     let registerButton: UIButton = {
         var button = UIButton(type: .system)
         button.setTitle("У меня еще нет аккаунта", for: .normal)
-        button.setTitleColor(Constants.Colors.primaryColor, for: .normal)
+        button.setTitleColor(Constants.Colors.primary, for: .normal)
         button.setTitleColor(.white, for: .selected)
         button.backgroundColor = .clear
         return button

@@ -19,8 +19,10 @@ struct Constants {
         }
     
     struct Colors {
-        static let primaryColor = UIColor(hex: "#292929")
+        static let primary = UIColor(hex: "#292929")
         static let backgroundColor = UIColor.systemBackground
+        static let green = UIColor(hex: "#1BA228")
+        static let gray: UIColor = .systemGray6
         static let textColor = UIColor.label
     }
     

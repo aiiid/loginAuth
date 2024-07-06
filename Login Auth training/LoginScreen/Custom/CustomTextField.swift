@@ -15,6 +15,7 @@ class CustomTextField: UITextField {
         super.init(frame: .zero)
         self.placeholder = placeholder
         self.isSecureTextEntry = isPasswordField
+        self.textContentType = isPasswordField ? .oneTimeCode : .none
         configureTextField(isPasswordField: isPasswordField)
     }
     
