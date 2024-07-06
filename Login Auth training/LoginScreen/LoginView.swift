@@ -106,7 +106,7 @@ class LoginView: UIView {
         
         alertView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).inset(-170)
-            make.height.equalTo(55)
+            make.height.equalTo(Constants.Size.textFieldHeight)
             make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
         }
     }

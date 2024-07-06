@@ -27,6 +27,9 @@
 		E22066792C3950AC002706D0 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066782C3950AC002706D0 /* RegistrationViewModel.swift */; };
 		E220667B2C3950B6002706D0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220667A2C3950B6002706D0 /* RegistrationViewController.swift */; };
 		E220667D2C395AAC002706D0 /* PasswordCheckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220667C2C395AAC002706D0 /* PasswordCheckerView.swift */; };
+		E220667F2C3967E4002706D0 /* PasswordMatchCheckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220667E2C3967E4002706D0 /* PasswordMatchCheckerView.swift */; };
+		E22066822C3983DD002706D0 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066812C3983DD002706D0 /* EmailView.swift */; };
+		E22066842C3983E6002706D0 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066832C3983E6002706D0 /* EmailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		E22066782C3950AC002706D0 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E220667A2C3950B6002706D0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		E220667C2C395AAC002706D0 /* PasswordCheckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCheckerView.swift; sourceTree = "<group>"; };
+		E220667E2C3967E4002706D0 /* PasswordMatchCheckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordMatchCheckerView.swift; sourceTree = "<group>"; };
+		E22066812C3983DD002706D0 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		E22066832C3983E6002706D0 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 				E22066592C367C20002706D0 /* LoginScreen */,
 				E22066702C381EB0002706D0 /* Home */,
 				E22066752C39508E002706D0 /* Registration */,
+				E22066802C3983BA002706D0 /* Email */,
 				E22066582C367C00002706D0 /* Support */,
 				E22066502C36788D002706D0 /* Info.plist */,
 			);
@@ -190,8 +197,18 @@
 				E22066782C3950AC002706D0 /* RegistrationViewModel.swift */,
 				E220667A2C3950B6002706D0 /* RegistrationViewController.swift */,
 				E220667C2C395AAC002706D0 /* PasswordCheckerView.swift */,
+				E220667E2C3967E4002706D0 /* PasswordMatchCheckerView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		E22066802C3983BA002706D0 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				E22066812C3983DD002706D0 /* EmailView.swift */,
+				E22066832C3983E6002706D0 /* EmailViewController.swift */,
+			);
+			path = Email;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +331,9 @@
 				E220666C2C37B9F0002706D0 /* LoginViewModel.swift in Sources */,
 				E22066742C381EDF002706D0 /* HomeViewController.swift in Sources */,
 				E22066452C36788A002706D0 /* SceneDelegate.swift in Sources */,
+				E220667F2C3967E4002706D0 /* PasswordMatchCheckerView.swift in Sources */,
 				E220665B2C367C2D002706D0 /* SplashView.swift in Sources */,
+				E22066822C3983DD002706D0 /* EmailView.swift in Sources */,
 				E220667B2C3950B6002706D0 /* RegistrationViewController.swift in Sources */,
 				E22066632C36AE2E002706D0 /* Constants.swift in Sources */,
 				E22066772C3950A3002706D0 /* RegistrationView.swift in Sources */,
@@ -324,6 +343,7 @@
 				E22066572C367BF6002706D0 /* SplashScreenViewController.swift in Sources */,
 				E22066792C3950AC002706D0 /* RegistrationViewModel.swift in Sources */,
 				E22066652C36AEA7002706D0 /* Extension.swift in Sources */,
+				E22066842C3983E6002706D0 /* EmailViewController.swift in Sources */,
 				E22066682C36BC22002706D0 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

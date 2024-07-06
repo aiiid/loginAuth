@@ -15,35 +15,33 @@ class NetworkManager {
     
     // MARK: - Login Method
     func login(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
-          let url = "https://lorby.online/api/v1/auth/login"
-          let login = Login(username: username, password: password)
-          
-          AF.request(url,
-                     method: .post,
-                     parameters: login,
-                     encoder: JSONParameterEncoder.default)
-              .response { response in
-                  debugPrint(response)
-                  if let data = response.data {
-                      do {
-                          if let httpResponse = response.response, httpResponse.statusCode > 300 {
-                              // Handle error response
-                              let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
-                              let error = NSError(domain: "", code: errorResponse.status, userInfo: [NSLocalizedDescriptionKey: errorResponse.message])
-                              completion(.failure(error))
-                          } else {
-                              // Handle success response
-                              let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-                              completion(.success(loginResponse.accessToken))
-                          }
-                      } catch {
-                          completion(.failure(error))
-                      }
-                  } else {
-                      completion(.failure(AFError.responseValidationFailed(reason: .dataFileNil)))
-                  }
-              }
-      }
+        let url = "https://lorby.online/api/v1/auth/login"
+        let login = Login(username: username, password: password)
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: login,
+                   encoder: JSONParameterEncoder.default)
+        .response { response in
+            debugPrint(response)
+            if let data = response.data {
+                do {
+                    if let httpResponse = response.response, httpResponse.statusCode > 300 {
+                        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                        let error = NSError(domain: "", code: errorResponse.status, userInfo: [NSLocalizedDescriptionKey: errorResponse.message])
+                        completion(.failure(error))
+                    } else {
+                        let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                        completion(.success(loginResponse.accessToken))
+                    }
+                } catch {
+                    completion(.failure(error))
+                }
+            } else {
+                completion(.failure(AFError.responseValidationFailed(reason: .dataFileNil)))
+            }
+        }
+    }
     
     func testLogin() {
         let login = Login(username: "lorby", password: "Lorbyyyy1!")
@@ -53,6 +51,47 @@ class NetworkManager {
                    parameters: login,
                    encoder: JSONParameterEncoder.default).response { response in
             debugPrint(response)
+        }
+    }
+    
+    // MARK: - Register Method
+    func register(username: String, password: String, email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let url = "https://lorby.online/api/v1/auth/register"
+        let parameters = Register(username: username, password: password, email: email)
+        
+        AF.request(
+            url,
+            method: .post,
+            parameters: parameters,
+            encoder: JSONParameterEncoder.default
+        ).responseData { response in
+            guard let statusCode = response.response?.statusCode else {
+                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unknown error occurred."])
+                completion(.failure(error))
+                return
+            }
+            
+            if statusCode == 200 {
+                if let data = response.data, let responseString = String(data: data, encoding: .utf8) {
+                    completion(.success(responseString))
+                } else {
+                    let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unknown error occurred."])
+                    completion(.failure(error))
+                }
+            } else {
+                if let data = response.data {
+                    do {
+                        let errorResponse = try JSONDecoder().decode(RegisterErrorResponse.self, from: data)
+                        let customError = NSError(domain: "", code: errorResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorResponse.message])
+                        completion(.failure(customError))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                } else {
+                    let error = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Unknown error occurred."])
+                    completion(.failure(error))
+                }
+            }
         }
     }
     

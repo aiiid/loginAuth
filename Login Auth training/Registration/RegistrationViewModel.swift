@@ -5,6 +5,18 @@
 //  Created by Ai Hawok on 06/07/2024.
 //
 
+struct Register: Encodable {
+    let username: String
+    let password: String
+    let email: String
+}
+struct RegisterErrorResponse: Decodable {
+    let path: String
+    let message: String
+    let statusCode: Int
+    let timestamp: String
+}
+
 import Foundation
 
 class RegistrationViewModel {
@@ -24,7 +36,15 @@ class RegistrationViewModel {
         var specialCharacter: Bool
     }
     
+    // MARK: - Password validity check
+    
     var passwordValidationResult: ((PasswordValidationResult) -> Void)?
+    var passwordMatchResult: ((Bool) -> Void)?
+    var allChecksValidResult: ((Bool) -> Void)?
+    
+    
+    private var passwordValidation = PasswordValidationResult(length: false, lowercase: false, uppercase: false, number: false, specialCharacter: false)
+    private var passwordsMatch = false
     
     func validate(password: String) {
         let length = password.count >= 8 && password.count <= 15
@@ -33,7 +53,7 @@ class RegistrationViewModel {
         let number = password.range(of: "[0-9]", options: .regularExpression) != nil
         let specialCharacter = password.range(of: "[^A-Za-z0-9]", options: .regularExpression) != nil
         
-        let result = PasswordValidationResult(
+        passwordValidation = PasswordValidationResult(
             length: length,
             lowercase: lowercase,
             uppercase: uppercase,
@@ -41,6 +61,43 @@ class RegistrationViewModel {
             specialCharacter: specialCharacter
         )
         
-        passwordValidationResult?(result)
+        passwordValidationResult?(passwordValidation)
+        checkAllValidations()
     }
+    
+    func validatePasswordMatch(password: String?, confirmPassword: String?) {
+        passwordsMatch = password == confirmPassword
+        passwordMatchResult?(passwordsMatch)
+        checkAllValidations()
+    }
+    
+    private func checkAllValidations() {
+        let allValid = passwordValidation.length &&
+        passwordValidation.lowercase &&
+        passwordValidation.uppercase &&
+        passwordValidation.number &&
+        passwordValidation.specialCharacter &&
+        passwordsMatch
+        allChecksValidResult?(allValid)
+    }
+    
+    // MARK: - Registration
+    var registrationResult: ((Result<String, Error>) -> Void)?
+    
+    func validateCredentials(username: String?, password: String?, email: String?, completion: @escaping (Result<Void, Error>) -> Void) {
+            guard let username = username, !username.isEmpty,
+                  let password = password, !password.isEmpty,
+                  let email = email, !email.isEmpty else {
+                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "All fields are required."])
+                completion(.failure(error))
+                return
+            }
+            completion(.success(()))
+        }
+    
+    func register(username: String, password: String, email: String) {
+            NetworkManager.shared.register(username: username, password: password, email: email) { [weak self] result in
+                self?.registrationResult?(result)
+            }
+        }
 }

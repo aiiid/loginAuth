@@ -47,7 +47,8 @@ class PasswordCheckerView: UIView {
     
     private func resetLabels() {
         [lengthLabel, lowercaseLabel, uppercaseLabel, numberLabel, specialCharacterLabel].forEach {
-            $0.textColor = .gray
+            $0.textColor = Constants.Colors.gray
+            $0.font = .systemFont(ofSize: 13, weight: .light)
         }
     }
     
