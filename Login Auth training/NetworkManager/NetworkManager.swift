@@ -15,33 +15,33 @@ class NetworkManager {
     
     // MARK: - Login Method
     func login(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let url = "https://lorby.online/api/v1/auth/login"
-        let login = Login(username: username, password: password)
-        
-        AF.request(url,
-                   method: .post,
-                   parameters: login,
-                   encoder: JSONParameterEncoder.default)
-        .response { response in
-            debugPrint(response)
-            if let data = response.data {
-                do {
-                    if let httpResponse = response.response, httpResponse.statusCode > 300 {
-                        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
-                        let error = NSError(domain: "", code: errorResponse.status, userInfo: [NSLocalizedDescriptionKey: errorResponse.message])
-                        completion(.failure(error))
-                    } else {
-                        let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-                        completion(.success(loginResponse.accessToken))
-                    }
-                } catch {
-                    completion(.failure(error))
-                }
-            } else {
-                completion(.failure(AFError.responseValidationFailed(reason: .dataFileNil)))
-            }
-        }
-    }
+           let url = "https://lorby.online/api/v1/auth/login"
+           let login = Login(username: username, password: password)
+           
+           AF.request(url,
+                      method: .post,
+                      parameters: login,
+                      encoder: JSONParameterEncoder.default)
+           .response { response in
+               debugPrint(response)
+               if let data = response.data {
+                   do {
+                       if let httpResponse = response.response, httpResponse.statusCode >= 400 {
+                           let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                           let error = NSError(domain: "", code: errorResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorResponse.message])
+                           completion(.failure(error))
+                       } else {
+                           let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                           completion(.success(loginResponse.accessToken))
+                       }
+                   } catch {
+                       completion(.failure(error))
+                   }
+               } else {
+                   completion(.failure(AFError.responseValidationFailed(reason: .dataFileNil)))
+               }
+           }
+       }
     
     func testLogin() {
         let login = Login(username: "lorby", password: "Lorbyyyy1!")

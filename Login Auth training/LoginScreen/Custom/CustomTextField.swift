@@ -17,6 +17,7 @@ class CustomTextField: UITextField {
         self.isSecureTextEntry = isPasswordField
         self.textContentType = isPasswordField ? .oneTimeCode : .none
         configureTextField(isPasswordField: isPasswordField)
+        disableSmartFeatures()
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +46,15 @@ class CustomTextField: UITextField {
                 rightView = eyeButton
                 rightViewMode = .always
             }
+        }
+    
+    private func disableSmartFeatures() {
+            autocorrectionType = .no
+            spellCheckingType = .no
+            smartQuotesType = .no
+            smartDashesType = .no
+            smartInsertDeleteType = .no
+            autocapitalizationType = .none
         }
     
     @objc private func togglePasswordVisibility() {

@@ -77,7 +77,7 @@ class EmailView: UIView {
         ].forEach{ addSubview($0)}
         
         mainText.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
+            make.top.equalToSuperview().offset(60)
             make.leading.trailing.equalToSuperview().inset(Constants.Padding.medium)
             make.centerX.equalToSuperview()
         }

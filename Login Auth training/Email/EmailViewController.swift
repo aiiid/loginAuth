@@ -32,11 +32,36 @@ class EmailViewController: UIViewController {
     
     private func setupTargets() {
         contentView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        contentView.noMailButton.addTarget(self, action: #selector(noMailButtonTapped), for: .touchUpInside)
     }
     
     @objc func loginButtonTapped() {
         let loginViewController = LoginViewController()
-        self.navigationController?.pushViewController(loginViewController, animated: true)
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = scene.windows.first {
+            let navigationController = UINavigationController(rootViewController: loginViewController)
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = navigationController
+            }, completion: nil)
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    @objc func noMailButtonTapped() {
+        presentPopup(
+            title: "Мы выслали еще одно письмо на указанную тобой почту \(email)",
+            message: "Не забудь проверить ящик “Спам”!11!!!!",
+            buttonText: "Понятно!!1!"
+        )
+    }
+    
+    private func presentPopup(title: String, message: String, buttonText: String) {
+        let popupVC = PopupViewController(title: title, message: message, buttonTitle: buttonText)
+        popupVC.modalPresentationStyle = .overFullScreen
+        popupVC.onDismiss = { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        present(popupVC, animated: true, completion: nil)
     }
 }
 

@@ -85,19 +85,28 @@ class RegistrationViewModel {
     var registrationResult: ((Result<String, Error>) -> Void)?
     
     func validateCredentials(username: String?, password: String?, email: String?, completion: @escaping (Result<Void, Error>) -> Void) {
-            guard let username = username, !username.isEmpty,
-                  let password = password, !password.isEmpty,
-                  let email = email, !email.isEmpty else {
-                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "All fields are required."])
+        guard let username = username, !username.isEmpty,
+              let password = password, !password.isEmpty,
+              let email = email, !email.isEmpty else {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "All fields are required."])
+            completion(.failure(error))
+            return
+        }
+        
+        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailPattern)
+            
+            if !emailPredicate.evaluate(with: email) {
+                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Please enter a valid email address."])
                 completion(.failure(error))
                 return
             }
-            completion(.success(()))
-        }
+        completion(.success(()))
+    }
     
     func register(username: String, password: String, email: String) {
-            NetworkManager.shared.register(username: username, password: password, email: email) { [weak self] result in
-                self?.registrationResult?(result)
-            }
+        NetworkManager.shared.register(username: username, password: password, email: email) { [weak self] result in
+            self?.registrationResult?(result)
         }
+    }
 }

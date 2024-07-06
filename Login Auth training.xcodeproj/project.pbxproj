@@ -30,6 +30,8 @@
 		E220667F2C3967E4002706D0 /* PasswordMatchCheckerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220667E2C3967E4002706D0 /* PasswordMatchCheckerView.swift */; };
 		E22066822C3983DD002706D0 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066812C3983DD002706D0 /* EmailView.swift */; };
 		E22066842C3983E6002706D0 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066832C3983E6002706D0 /* EmailViewController.swift */; };
+		E22066872C39898F002706D0 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066862C39898F002706D0 /* PopupView.swift */; };
+		E22066892C3989A5002706D0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22066882C3989A5002706D0 /* PopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		E220667E2C3967E4002706D0 /* PasswordMatchCheckerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordMatchCheckerView.swift; sourceTree = "<group>"; };
 		E22066812C3983DD002706D0 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		E22066832C3983E6002706D0 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		E22066862C39898F002706D0 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		E22066882C3989A5002706D0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,10 +209,20 @@
 		E22066802C3983BA002706D0 /* Email */ = {
 			isa = PBXGroup;
 			children = (
+				E22066852C398984002706D0 /* PopUp */,
 				E22066812C3983DD002706D0 /* EmailView.swift */,
 				E22066832C3983E6002706D0 /* EmailViewController.swift */,
 			);
 			path = Email;
+			sourceTree = "<group>";
+		};
+		E22066852C398984002706D0 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				E22066862C39898F002706D0 /* PopupView.swift */,
+				E22066882C3989A5002706D0 /* PopupViewController.swift */,
+			);
+			path = PopUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +342,7 @@
 				E22066602C368916002706D0 /* LoginView.swift in Sources */,
 				E22066722C381ED5002706D0 /* HomeView.swift in Sources */,
 				E22066432C36788A002706D0 /* AppDelegate.swift in Sources */,
+				E22066892C3989A5002706D0 /* PopupViewController.swift in Sources */,
 				E220666C2C37B9F0002706D0 /* LoginViewModel.swift in Sources */,
 				E22066742C381EDF002706D0 /* HomeViewController.swift in Sources */,
 				E22066452C36788A002706D0 /* SceneDelegate.swift in Sources */,
@@ -335,6 +350,7 @@
 				E220665B2C367C2D002706D0 /* SplashView.swift in Sources */,
 				E22066822C3983DD002706D0 /* EmailView.swift in Sources */,
 				E220667B2C3950B6002706D0 /* RegistrationViewController.swift in Sources */,
+				E22066872C39898F002706D0 /* PopupView.swift in Sources */,
 				E22066632C36AE2E002706D0 /* Constants.swift in Sources */,
 				E22066772C3950A3002706D0 /* RegistrationView.swift in Sources */,
 				E220667D2C395AAC002706D0 /* PasswordCheckerView.swift in Sources */,
